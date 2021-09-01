@@ -1,5 +1,7 @@
 # Functional Programming in C# #
 
+__This is just a fork of the original Repo that you can find [here](https://github.com/la-yumba/functional-csharp-code).__
+
 This repo contains the code samples, exercises and solutions for the book
 [Functional Programming in C#](https://www.manning.com/books/functional-programming-in-c-sharp?a_aid=functional-programming-in-c-sharp&a_bid=ad9af506)
 published by Manning.
