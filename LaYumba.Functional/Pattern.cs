@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
+//using System.Reflection;
 
 namespace LaYumba.Functional
 {
@@ -10,7 +10,8 @@ namespace LaYumba.Functional
 
    public class NonExhaustivePattern : Exception { }
 
-   public class Pattern : Pattern<dynamic> { }
+   // changed type dynamic -> object
+   public class Pattern : Pattern<object> { }
 
    public class Pattern<R> : IEnumerable
    {
@@ -48,7 +49,8 @@ namespace LaYumba.Functional
          return matchingDel(value);
       }
 
+      // changed tup.Item1.GetTypeInfo() to ... GetType()
       static Func<(Type, Func<object, R>), bool> InputArgMatchesTypeOf(object value)
-         => tup => tup.Item1.GetTypeInfo().IsAssignableFrom(value.GetType());
+         => tup => tup.Item1.GetType().IsAssignableFrom(value.GetType());
    }
 }
