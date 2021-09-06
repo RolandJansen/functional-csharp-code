@@ -97,8 +97,8 @@ namespace LaYumba.Functional
       public static Task<IEnumerable<R>> TraverseA<T, R>
          (this IEnumerable<T> ts, Func<T, Task<R>> f)
          => ts.Aggregate(
-            seed: Task.FromResult(Enumerable.Empty<R>()),
-            func: (rs, t) => Task.FromResult(Append<R>())
+            seed: Tasks.FromResult(Enumerable.Empty<R>()),
+            func: (rs, t) => Tasks.FromResult(Append<R>())
                                    .Apply(rs)
                                    .Apply(f(t)));
 
@@ -109,7 +109,7 @@ namespace LaYumba.Functional
       public static Task<IEnumerable<R>> TraverseM<T, R>
          (this IEnumerable<T> ts, Func<T, Task<R>> func)
          => ts.Aggregate(
-            seed: Task.FromResult(Enumerable.Empty<R>()),
+            seed: Tasks.FromResult(Enumerable.Empty<R>()),
             // Task<[R]> -> T -> Task<[R]>
             func: (taskRs, t) => from rs in taskRs
                                  from r in func(t)
