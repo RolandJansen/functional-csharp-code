@@ -1,8 +1,8 @@
 # Functional Programming in C# #
 
-__This is just a fork of the original Repo that you can find [here](https://github.com/la-yumba/functional-csharp-code).__
+__This is an experimental backport of the LaYumba.Functional library to .NET Framework 3.5. You can find the original project [here](https://github.com/la-yumba/functional-csharp-code).__
 
-The idea of this fork is to back-port the library to .NET Framework 3.5.
+---
 
 This repo contains the code samples, exercises and solutions for the book
 [Functional Programming in C#](https://www.manning.com/books/functional-programming-in-c-sharp?a_aid=functional-programming-in-c-sharp&a_bid=ad9af506)
