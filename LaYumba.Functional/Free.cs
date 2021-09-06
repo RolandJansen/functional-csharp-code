@@ -47,37 +47,37 @@ namespace LaYumba.Functional
             More: coyo => Run(coyo.Func(interpret(coyo.Value)), interpret)
          );
 
-      // Runs a Free<T> with the given asynchronous interpreter, returning a Task<T>
-      public static Task<T> Run<T>
-         (this Free<T> free, Func<object, Task<object>> interpret)
-         => free.Match<Task<T>>(
-            Done: t => Async(t),
-            More: async coyo => await Run(coyo.Func(await interpret(coyo.Value)), interpret)
-         );
+        // Runs a Free<T> with the given asynchronous interpreter, returning a Task<T>
+        public static Task<T> Run<T>
+           (this Free<T> free, Func<object, Task<object>> interpret)
+           => free.Match<Task<T>>(
+              Done: t => Async(t),
+              More: async coyo => await Run(coyo.Func(await interpret(coyo.Value)), interpret)
+           );
 
-      /// Lifts a single instruction into a program.
-      /// Given an instruction such as: 
-      /// 
-      /// Ask( Prompt: "What's your age?" )
-      /// 
-      /// we get a Coyo such as
-      /// 
-      /// Coyo(
-      ///    Value: Ask ( Prompt: "What's your age?" ),
-      ///    Func: age => age // where `age` is the value that will be returned by running the Ask
-      /// )
-      /// 
-      /// and then a program such as:
-      ///
-      /// More(
-      ///    Coyo(
-      ///       Value: Ask( Prompt: "What's your age?" ),
-      ///       Func: age => Done(
-      ///          Value: age
-      ///       )
-      ///    )
-      /// )
-      public static Free<T> Of<T>(object op)
+        /// Lifts a single instruction into a program.
+        /// Given an instruction such as: 
+        /// 
+        /// Ask( Prompt: "What's your age?" )
+        /// 
+        /// we get a Coyo such as
+        /// 
+        /// Coyo(
+        ///    Value: Ask ( Prompt: "What's your age?" ),
+        ///    Func: age => age // where `age` is the value that will be returned by running the Ask
+        /// )
+        /// 
+        /// and then a program such as:
+        ///
+        /// More(
+        ///    Coyo(
+        ///       Value: Ask( Prompt: "What's your age?" ),
+        ///       Func: age => Done(
+        ///          Value: age
+        ///       )
+        ///    )
+        /// )
+        public static Free<T> Of<T>(object op)
          => More(Coyo.Of<object, T>(op).Map(t => Done<T>(t)));
 
       static Free<T> Done<T>(T t) => new Done<T>(t);
