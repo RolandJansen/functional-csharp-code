@@ -17,8 +17,6 @@
     <PackageReference Include="NetLegacySupport.Action" Version="1.1.1" />
     <PackageReference Include="Rackspace.Collections.Immutable" Version="1.1.36" />
     <PackageReference Include="Rx-Main" Version="1.0.11226" />
-    <PackageReference Include="System.Threading.dll" Version="1.0.2856" />
-    <PackageReference Include="TaskParallelLibrary" Version="1.0.2856" />
     <PackageReference Include="ValueTupleBridge" Version="0.1.5" />
   </ItemGroup>
 </Project>
