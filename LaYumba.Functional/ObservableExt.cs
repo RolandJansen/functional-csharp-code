@@ -12,15 +12,15 @@ namespace LaYumba.Functional
       // Safely performs a Task-returning function for each t in ts,
       // and returns a stream of results for the completed tasks, 
       // and a stream of exceptions
-      public static (IObservable<R> Completed, IObservable<Exception> Faulted) 
-      Safely<T, R>(this IObservable<T> ts, Func<T, Task<R>> f)
-         => ts
-            .SelectMany(t =>
-               Observable.FromAsync(() =>
-                  f(t).Map(
-                     Faulted: ex => ex,
-                     Completed: r => Exceptional(r))))
-            .Partition();
+      //public static (IObservable<R> Completed, IObservable<Exception> Faulted) 
+      //Safely<T, R>(this IObservable<T> ts, Func<T, Task<R>> f)
+      //   => ts
+      //      .SelectMany(t =>
+      //         Observable.FromAsync(() =>
+      //            f(t).Map(
+      //               Faulted: ex => ex,
+      //               Completed: r => Exceptional(r))))
+      //      .Partition();
 
       public static (IObservable<T> Successes, IObservable<Exception> Exceptions) 
       Partition<T>(this IObservable<Exceptional<T>> excTs)
