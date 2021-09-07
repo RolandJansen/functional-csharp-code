@@ -68,7 +68,7 @@ namespace LaYumba.Functional
       public override string ToString()
          => IsValid
             ? $"Valid({Value})"
-            : $"Invalid([{string.Join(", ", Errors)}])";
+            : $"Invalid([{string.Join(", ", Errors.Select(err => err.ToString()).ToArray())}])";
 
       public override bool Equals(object obj) => this.ToString() == obj.ToString(); // hack
    }
