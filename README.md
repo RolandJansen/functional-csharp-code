@@ -17,7 +17,7 @@ Which means you can pass in anything without any validation.
 There are custom implementations of:
 
 - Tuple
-- Enum: TryParse
+- Enum: TryParse (currently broken)
 - Type: GetTypeInfo
 - Task: FromResult, WhenAll, Delay
 
