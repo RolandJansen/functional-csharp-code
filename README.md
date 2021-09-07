@@ -2,6 +2,27 @@
 
 __This is an experimental backport of the LaYumba.Functional library to .NET Framework 3.5. You can find the original project [here](https://github.com/la-yumba/functional-csharp-code).__
 
+Recently I'm working on some projects that need to be compiled against the .NET Framework 3.5 for compatibility reasons.
+Since I found no functional library to use with this old version, I backported this one.
+It is a "works-for-me" project so don't expect it to be a 100% accurate port.
+
+These things are currently disabled:
+
+- Observable: Safely<T, R>(Func<T, Task<R>>)
+- The complete Agent class
+
+"Pattern" takes an argument of type "object" instead of "dynamic". 
+Which means you can pass in anything without any validation.
+
+There are custom implementations of:
+
+- Tuple
+- Enum: TryParse
+- Type: GetTypeInfo
+- Task: FromResult, WhenAll, Delay
+
+There could be edge-cases like error-handling where they don't behave like the original ones.
+
 ---
 
 This repo contains the code samples, exercises and solutions for the book
